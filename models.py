@@ -31,18 +31,22 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
+    pass
+
+
+
+
+class Player(BasePlayer):
+    
     presented_word=models.CharField()
     correct_match=models.CharField()
-    
+
     def get_pair(self):
         word=Constants.words[self.round_number]
         self.presented_word=word
         self.correct_match=Constants.pairs[word]
 
 
-
-
-class Player(BasePlayer):
     pair_choice=models.CharField(
         choices=list(Constants.pairs.values())
     )

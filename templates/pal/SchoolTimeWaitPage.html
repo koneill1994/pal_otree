@@ -7,78 +7,7 @@
 
 {% block content %}
 
-<div id="playerchoice">
-    <p id="hovertest">
-        this is test text
-    </p>
-</div>
-
-<div id="hidden_input">
-    {% formfield player.hovercount %}
-    {% formfield player.hovertime %}
-    {% formfield player.hover_json %}
-</div>
-
-
-<style>
-
-#hovertest{
-    opacity:0; 
-    display: inline-block;
-    margin-bottom: 0px;
-    padding: 10px;
-}
-#hovertest:hover{
-    opacity: 1 !important;
-}
-
-#hidden_input{
-    display:none;
-}
-
-#playerchoice{
-    display: inline-block;
-    background: #EEEEEE;
-}
-
-</style>
-
-<script>
-
-page_start=new Date().getTime();
-
-el=document.getElementById("hovertest")
-hcbox=document.getElementById("id_hovercount")
-htbox=document.getElementById("id_hovertime")
-hjson_box=document.getElementById("id_hover_json")
-
-ht=0
-hc=0
-
-moveover_time=0
-move_off_time=0
-
-hoverlist=[]
-
-
-el.onmouseover = function(){
-    hc++;
-    hcbox.value=hc;
-    moveover_time=new Date().getTime();
-
-};
-
-el.onmouseleave =function(){
-    move_off_time=new Date().getTime()
-    ht+=move_off_time-moveover_time; // in ms
-    
-    hoverlist.push([moveover_time-page_start,move_off_time-page_start])
-    
-    hjson_box.value=JSON.stringify(hoverlist)
-    htbox.value=ht;
-}
-
-</script>
+Click the button when you are ready to start the next page
 
     {% next_button %}
 

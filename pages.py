@@ -8,12 +8,8 @@ class MyPage(Page):
     
     
 class SchoolTimeWaitPage(Page): 
-    form_model='player'
-    form_fields=['hovercount','hovertime','hover_json']  
-    
- 
     def before_next_page(self):
-        self.group.get_pair()
+        self.player.get_pair()
         
 class schooltime1(Page):
     form_model='player'
@@ -21,8 +17,6 @@ class schooltime1(Page):
 
 
 class ResultsWaitPage(WaitPage):
-
-    def after_all_players_arrive(self):
         pass
 
 
@@ -41,9 +35,20 @@ class SchooltimeResults(Page):
 
     pass
 
+class Feedback(Page):
+    pass
+
+class Solitaire(Page):
+    pass
+    
+class Sudoku(Page):
+    pass
+
 page_sequence = [
+    Solitaire,
     SchoolTimeWaitPage,
     schooltime1,
     ResultsWaitPage,
-    SchooltimeResults
+    SchooltimeResults,
+    Feedback
 ]
