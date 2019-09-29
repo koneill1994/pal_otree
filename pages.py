@@ -15,6 +15,9 @@ class schooltime1(Page):
     form_model='player'
     form_fields=['pair_choice']
 
+class schooltime_non_interactive(Page):
+    pass
+
 
 class ResultsWaitPage(WaitPage):
         pass
@@ -35,7 +38,17 @@ class SchooltimeResults(Page):
 
     pass
 
+class HomeTimeChoose(Page):
+    form_model='player'
+    form_fields=['hometime_choice']
+
+class HomeTimeRest(Page):
+    timeout_seconds = 60
+
 class Feedback(Page):
+    pass
+
+class Schooltime_feedback_individual(Page):
     pass
 
 class Solitaire(Page):
@@ -43,12 +56,29 @@ class Solitaire(Page):
     
 class Sudoku(Page):
     pass
-
-page_sequence = [
-    Solitaire,
+    
+    
+# depending on condition, we'll set page_sequence equal to 
+# one of the following
+sequence_group = [
     SchoolTimeWaitPage,
     schooltime1,
     ResultsWaitPage,
     SchooltimeResults,
     Feedback
 ]
+
+sequence_individual = [
+    SchoolTimeWaitPage,
+    schooltime1,
+    Schooltime_feedback_individual
+]
+
+sequence_non_interactive = [
+    SchoolTimeWaitPage,
+    schooltime_non_interactive
+]
+#####
+
+
+page_sequence = sequence_non_interactive
